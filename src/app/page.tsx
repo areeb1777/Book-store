@@ -1,101 +1,54 @@
-import Image from "next/image";
+import Link from "next/link";
+
+// Define the Book interface
+interface Book {
+  id: number;
+  title: string;
+  author: string;
+  description: string;
+  image: string;
+}
+
+// Define the books array with the actual data (only 4 books)
+const books: Book[] = [
+  { id: 1, title: "The Handmaid's Tale", author: "Margaret Atwood", description: "Set in the religious patriarchy of Gilead.", image: "https://prodimage.images-bn.com/pimages/9780385490818_p0_v8_s600x595.jpg" },
+  { id: 2, title: "To Kill a Mockingbird", author: "Harper Lee", description: "A story of racial injustice in the American South.", image: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1553383690i/2657.jpg" },
+  { id: 3, title: "1984", author: "George Orwell", description: "A dystopian novel about the dangers of totalitarianism.", image: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1657781256i/61439040.jpg" },
+  { id: 4, title: "Pride and Prejudice", author: "Jane Austen", description: "A classic romance about marriage and morality.", image: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1320399351i/1885.jpg" }
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-gray-100 flex flex-col">
+      {/* Hero Section */}
+      <section className="relative bg-cover bg-center h-[500px] text-white" style={{ backgroundImage: "url('https://images.pexels.com/photos/13650913/pexels-photo-13650913.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')" }}>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-70"></div>
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center p-4">
+          <h1 className="text-5xl font-extrabold text-yellow-200 mb-4">Welcome to the Book Haven</h1>
+          <p className="text-lg text-yellow-100 mb-8">Discover the world's greatest books and embark on unforgettable journeys.</p>
+          <Link href="/books">
+            <button className="bg-yellow-500 hover:bg-yellow-600 text-white py-3 px-6 rounded-full font-semibold transition transform hover:scale-105">Browse Collection</button>
+          </Link>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Popular Books Section */}
+      <section className="py-16 bg-gray-50 px-6">
+        <h2 className="text-3xl font-bold text-center text-blue-600 mb-10">Popular Books</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {books.map((book) => (
+            <div key={book.id} className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition transform hover:scale-105">
+              <img src={book.image} alt={`${book.title} Cover`} className="w-full h-40 object-cover rounded mb-4" />
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">{book.title}</h3>
+              <p className="text-gray-600">{book.author}</p>
+              <p className="text-gray-700 text-sm mt-2">{book.description}</p>
+              <Link href="/books">
+                <button className="mt-4 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition transform hover:scale-105">Learn More</button>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

@@ -1,6 +1,7 @@
-"use client";
+'use client';
 
 import { useState } from "react";
+import Image from "next/image"; // Import Image from next/image
 
 // Define the Book type for our books
 interface Book {
@@ -49,7 +50,13 @@ export default function Books() {
             onClick={() => openModal(book)}
             className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition cursor-pointer"
           >
-            <img src={book.image} alt={book.title} className="w-full h-48 object-cover rounded mb-4" />
+            <Image
+              src={book.image}
+              alt={book.title}
+              width={300} // Set width and height for better performance
+              height={200}
+              className="w-full h-48 object-cover rounded mb-4"
+            />
             <h3 className="font-semibold text-xl text-gray-800 mb-1">{book.title}</h3>
             <p className="text-gray-600 mb-2">by {book.author}</p>
             <p className="text-gray-700 text-sm">{book.description.slice(0, 60)}...</p>
@@ -71,9 +78,21 @@ export default function Books() {
       {/* Modal for Book Details */}
       {selectedBook && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-11/12 sm:w-3/4 lg:w-1/2 max-h-full overflow-y-auto">
-            <button onClick={closeModal} className="text-gray-500 hover:text-gray-800 float-right mb-2">&times;</button>
-            <img src={selectedBook.image} alt={selectedBook.title} className="w-full h-64 object-cover rounded mb-4" />
+          <div className="bg-white p-6 rounded-lg shadow-lg w-11/12 sm:w-3/4 lg:w-1/2 max-h-[80vh] overflow-y-auto">
+            <button
+              onClick={closeModal}
+              className="text-gray-500 hover:text-gray-800 float-right mb-2"
+              aria-label="Close Modal"
+            >
+              &times;
+            </button>
+            <Image
+              src={selectedBook.image}
+              alt={selectedBook.title}
+              width={500} // Adjust the size of the image in the modal
+              height={400}
+              className="w-full h-64 object-cover rounded mb-4"
+            />
             <h3 className="text-2xl font-bold text-gray-800 mb-2">{selectedBook.title}</h3>
             <p className="text-lg text-gray-600 mb-4">by {selectedBook.author}</p>
             <p className="text-gray-700">{selectedBook.description}</p>

@@ -1,12 +1,10 @@
-// app/contact/page.tsx
-
 import { FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 
 export default function Contact() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-10">
       <h2 className="text-4xl font-bold text-blue-600 mb-6">Contact Us</h2>
-      <p className="text-gray-700 mb-4">We'd love to hear from you! Reach out to us at:</p>
+      <p className="text-gray-700 mb-4">We&apos;d love to hear from you! Reach out to us at:</p>
       <div className="flex flex-col items-center space-y-4">
         <div className="flex items-center space-x-2">
           <FaEnvelope className="text-blue-600" />

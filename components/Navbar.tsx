@@ -9,7 +9,7 @@ export default function Navbar() {
         <h1 className="text-2xl font-bold text-white">📚 Book Store</h1>
 
         {/* Menu items */}
-        <div className="flex space-x-6 items-center">
+        <div className="flex space-x-6 items-center ml-28">
           <Link
             href="/"
             className="text-white hover:text-blue-200 transition"

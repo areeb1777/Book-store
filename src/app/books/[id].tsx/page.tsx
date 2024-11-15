@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
+import { useRouter } from "next/router";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Book {
   id: number;
@@ -79,47 +80,32 @@ const books: Book[] = [
   },
 ];
 
-export default function Books() {
-  return (
-    <div className="min-h-screen bg-gray-100 flex flex-col">
-      {/* Books Header Section */}
-      <section className="relative bg-cover bg-center h-[300px] text-white">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-70"></div>
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center p-4">
-          <h1 className="text-5xl font-extrabold text-yellow-200 mb-4">Books Collection</h1>
-        </div>
-      </section>
+export default function BookDetails() {
+  const router = useRouter();
+  const { id } = router.query;
+  const book = books.find((b) => b.id === parseInt(id as string));
 
-      {/* Books List Section */}
-      <section className="py-16 bg-gray-50 px-6">
-        <h2 className="text-3xl font-bold text-center text-blue-600 mb-10">
-          All Books
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {books.map((book) => (
-            <div
-              key={book.id}
-              className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition transform hover:scale-105"
-            >
-              <Image
-                src={book.image}
-                alt={book.title}
-                width={300}
-                height={450}
-                className="w-full h-48 object-cover rounded mb-4"
-              />
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">{book.title}</h3>
-              <p className="text-gray-600">{book.author}</p>
-              <p className="text-gray-700 text-sm mt-2">{book.description.slice(0, 60)}...</p>
-              <Link href={`/books/${book.id}`}>
-                <button className="mt-4 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition transform hover:scale-105">
-                  Learn More
-                </button>
-              </Link>
-            </div>
-          ))}
-        </div>
-      </section>
+  if (!book) return <div>Book not found.</div>;
+
+  return (
+    <div className="min-h-screen bg-gray-100 flex flex-col p-6">
+      <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+        <Image
+          src={book.image}
+          alt={book.title}
+          width={500}
+          height={750}
+          className="w-full h-96 object-cover rounded mb-6"
+        />
+        <h1 className="text-4xl font-bold text-gray-800 mb-4">{book.title}</h1>
+        <p className="text-xl text-gray-600 mb-4">By {book.author}</p>
+        <p className="text-gray-700 mb-6">{book.description}</p>
+        <Link href="/books">
+          <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg">
+            Back to Books
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }

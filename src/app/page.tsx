@@ -1,7 +1,6 @@
 import Link from "next/link";
-import Image from "next/image"; // Import Image from next/image
+import Image from "next/image";
 
-// Define the Book interface
 interface Book {
   id: number;
   title: string;
@@ -10,18 +9,17 @@ interface Book {
   image: string;
 }
 
-// Define the books array with the actual data (only 4 books)
 const books: Book[] = [
   { 
     id: 1, 
-    title: "The Handmaid&apos;s Tale",  // Escaped apostrophe
+    title: "The Handmaid&apos;s Tale",
     author: "Margaret Atwood", 
     description: "Set in the religious patriarchy of Gilead.", 
     image: "https://prodimage.images-bn.com/pimages/9780385490818_p0_v8_s600x595.jpg" 
   },
   { 
     id: 2, 
-    title: "To Kill a Mockingbird",  // Escaped apostrophe
+    title: "To Kill a Mockingbird",
     author: "Harper Lee", 
     description: "A story of racial injustice in the American South.", 
     image: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1553383690i/2657.jpg" 
@@ -42,15 +40,14 @@ const books: Book[] = [
   }
 ];
 
-// Book Card Component for individual books
 const BookCard = ({ book }: { book: Book }) => (
   <div key={book.id} className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition transform hover:scale-105">
     <Image
       src={book.image}
       alt={`${book.title} Cover`}
-      width={300} // Set width
-      height={400} // Set height
-      layout="intrinsic"  // Keeps the aspect ratio
+      width={300} 
+      height={400} 
+      layout="intrinsic" 
       className="w-full h-40 object-cover rounded mb-4"
     />
     <h3 className="text-xl font-semibold text-gray-800 mb-2">{book.title}</h3>
@@ -67,7 +64,6 @@ const BookCard = ({ book }: { book: Book }) => (
 export default function Home() {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
-      {/* Hero Section */}
       <section className="relative bg-cover bg-center h-[500px] text-white" style={{ backgroundImage: "url('https://images.pexels.com/photos/13650913/pexels-photo-13650913.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')" }}>
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-70"></div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center p-4">
@@ -79,7 +75,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Popular Books Section */}
       <section className="py-16 bg-gray-50 px-6">
         <h2 className="text-3xl font-bold text-center text-blue-600 mb-10">Popular Books</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">

@@ -1,4 +1,3 @@
-// components/BookCard.tsx
 import styles from './BookCard.module.css';
 
 type BookCardProps = {

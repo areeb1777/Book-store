@@ -86,7 +86,9 @@ export default function Books() {
       <section className="relative bg-cover bg-center h-[300px] text-white">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-70"></div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center p-4">
-          <h1 className="text-5xl font-extrabold text-yellow-200 mb-4">Books Collection</h1>
+          <h1 className="text-5xl font-extrabold text-yellow-200 mb-4">
+            Books Collection
+          </h1>
         </div>
       </section>
 
@@ -108,10 +110,14 @@ export default function Books() {
                 height={450}
                 className="w-full h-48 object-cover rounded mb-4"
               />
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">{book.title}</h3>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                {book.title}
+              </h3>
               <p className="text-gray-600">{book.author}</p>
-              <p className="text-gray-700 text-sm mt-2">{book.description.slice(0, 60)}...</p>
-              <Link href={`/books/${book.id}`}>
+              <p className="text-gray-700 text-sm mt-2">
+                {book.description.slice(0, 60)}...
+              </p>
+              <Link href={`/books`}>
                 <button className="mt-4 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition transform hover:scale-105">
                   Learn More
                 </button>

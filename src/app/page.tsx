@@ -53,7 +53,7 @@ const BookCard = ({ book }: { book: Book }) => (
     <h3 className="text-xl font-semibold text-gray-800 mb-2">{book.title}</h3>
     <p className="text-gray-600">{book.author}</p>
     <p className="text-gray-700 text-sm mt-2">{book.description}</p>
-    <Link href={`/books/${book.id}`}>
+    <Link href={`/books`}>
       <button className="mt-4 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition transform hover:scale-105">
         Learn More
       </button>

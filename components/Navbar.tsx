@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
+import Link from "next/link";
 
 export default function Navbar() {
   return (
@@ -9,11 +9,8 @@ export default function Navbar() {
         <h1 className="text-2xl font-bold text-white">📚 Book Store</h1>
 
         {/* Menu items */}
-        <div className="flex space-x-6 items-center ml-28">
-          <Link
-            href="/"
-            className="text-white hover:text-blue-200 transition"
-          >
+        <div className="flex space-x-6">
+          <Link href="/" className="text-white hover:text-blue-200 transition">
             Home
           </Link>
           <Link
